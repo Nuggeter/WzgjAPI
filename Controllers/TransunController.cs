@@ -48,5 +48,24 @@ namespace WzgjSystemAPI.Controllers
                 return ResReturn(State.Error, "查询故障车辆明细出错：" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// 查询员工信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/Transun/QueryEmployee")]
+        public HttpResponseMessage QueryEmployee()
+        {
+            try
+            {
+                var result = TransunManager.GetInstance().QueryEmployee();
+                return ResReturn(State.Success, "查询员工信息成功", result);
+            }
+            catch (Exception ex)
+            {
+                return ResReturn(State.Error, "查询员工信息出错：" + ex.Message);
+            }
+        }
     }
 }
